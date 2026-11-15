@@ -167,6 +167,46 @@ body.strategy-open{overflow:hidden}
  .quick-why{font-size:10px}.coachbtn{font-size:11px}
 }
 
+
+/* Auto play: fixed player-chosen betting, coach-driven decisions, fluid dealer reveal */
+.auto-panel{margin:11px 0 1px;padding:9px 11px;border:1px solid #557b67;border-radius:11px;background:linear-gradient(125deg,#173d31,#102e28);display:flex;flex-direction:column;gap:7px;min-width:0}
+.auto-mainrow{display:flex;align-items:center;gap:8px;justify-content:space-between;min-width:0}
+.auto-switch{white-space:nowrap;background:#f0c877;color:#122b26;border:1px solid #f4db9b;border-radius:8px;font-size:12px;font-weight:830;padding:8px 10px;min-width:105px}
+.auto-switch[aria-pressed="true"]{background:#954c45;color:#fff1e7;border-color:#d79083}
+.auto-modes{display:flex;gap:3px;padding:3px;background:#102b25;border-radius:8px;min-width:0}
+.auto-mode{border:0;background:transparent;border-radius:6px;color:#c5dfd1;font-size:12px;font-weight:780;padding:6px 9px;white-space:nowrap}
+.auto-mode.active{background:#335e48;color:#fff5d7;box-shadow:inset 0 0 0 1px #78977b}
+.auto-speed-label{display:flex;gap:5px;align-items:center;color:#c1dcd1;font-size:11px;white-space:nowrap}.auto-speed-label strong{color:#ffe3a0;font-variant-numeric:tabular-nums}
+.auto-subrow{display:grid;grid-template-columns:minmax(75px,1fr) 78px minmax(130px,2fr);gap:9px;align-items:center;min-width:0}
+.auto-subrow input[type="range"]{width:100%;accent-color:#edcb77;height:20px;cursor:pointer;touch-action:pan-x;margin:0}
+.auto-trend{width:78px;height:26px;overflow:visible}
+.auto-trend path{fill:none;stroke:#f4d28a;stroke-width:2.7;stroke-linejoin:round;stroke-linecap:round}
+.auto-message{min-width:0;font-size:10px;color:#d7eadc;line-height:1.23;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.auto-panel.is-on{border-color:#e8cc77;box-shadow:0 0 0 1px #8b73434d,0 0 20px #f2d48012}
+.autotable-tag{display:none;position:absolute;z-index:3;top:45%;right:7%;padding:4px 7px;border-radius:8px;background:#0e2d29d8;border:1px solid #f0d18888;color:#ffe0a4;font-size:10px;font-weight:800;letter-spacing:.06em;pointer-events:none;white-space:nowrap}
+body.auto-playing .autotable-tag{display:block}
+@keyframes autoCardEntry{0%{opacity:0;transform:translate(95px,-78px) rotate(17deg) scale(.6);filter:blur(2px)}55%{opacity:1;filter:blur(0)}80%{transform:translate(-3px,2px) rotate(-3deg) scale(1.04)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+@keyframes autoHoleFlip{0%{opacity:.48;transform:rotateY(86deg) scale(.88)}70%{opacity:1;transform:rotateY(-8deg) scale(1.05)}100%{transform:rotateY(0) scale(1)}}
+@keyframes autoHandGlow{0%{box-shadow:0 0 0 0 #f2d27a00}35%{box-shadow:0 0 0 2px #f2d27aff,0 0 18px #edc46a7a}100%{box-shadow:0 0 0 0 #f2d27a00}}
+.cardface.auto-enter{animation:autoCardEntry var(--card-duration,.48s) cubic-bezier(.13,.8,.2,1) both;animation-delay:var(--card-delay,0ms)}
+.cardface.auto-flip{animation:autoHoleFlip var(--card-duration,.5s) ease-out both}
+.hand.auto-highlight{animation:autoHandGlow var(--card-duration,.48s) ease-out}
+.auto-results{padding:14px 2px}.auto-chart-wrap{border:1px solid #365c4e;border-radius:9px;padding:13px;background:#0d2925}.auto-chart{width:100%;height:122px;display:block;overflow:visible}.auto-chart .baseline{stroke:#42635b;stroke-width:1;stroke-dasharray:3 4}.auto-chart .bankline{stroke:#f2d184;stroke-width:3;fill:none;stroke-linejoin:round;stroke-linecap:round}.auto-chart .bankdot{fill:#ffe49b;stroke:#123a33;stroke-width:2}.auto-report{color:#d4ece0;font-size:12px;margin:9px 2px;line-height:1.55}.auto-report strong{color:#ffe4a0}.auto-report small{display:block;color:#9dbcb2;font-size:11px}.auto-hint{color:#b9d3c6;font-size:11px;line-height:1.45;margin:7px 2px 0}
+@media(prefers-reduced-motion:reduce){.cardface.auto-enter,.cardface.auto-flip,.hand.auto-highlight{animation:none}}
+@media(max-width:640px){
+ .auto-panel{flex:0 0 auto;margin:1px 0 0;padding:5px 6px;gap:2px;border-radius:8px}
+ .auto-mainrow{gap:4px}.auto-switch{min-width:77px;font-size:10px;padding:5px 5px;min-height:28px;border-radius:6px}
+ .auto-modes{gap:1px;padding:2px;border-radius:6px}.auto-mode{font-size:10px;padding:4px 6px;border-radius:5px;min-height:24px}
+ .auto-speed-label{font-size:10px;gap:3px}.auto-speed-label strong{font-size:11px}
+ .auto-subrow{grid-template-columns:minmax(80px,1fr) 60px minmax(95px,1.6fr);gap:5px}
+ .auto-subrow input[type="range"]{height:17px}.auto-trend{width:60px;height:18px}
+ .auto-message{font-size:9.5px;line-height:1.12;-webkit-line-clamp:1;white-space:nowrap;display:block;text-overflow:ellipsis}
+ .autotable-tag{top:43%;right:3%;font-size:9px;padding:3px 5px}
+}
+@media(max-width:640px) and (max-height:720px){
+ .auto-panel{padding:3px 5px;gap:1px}.auto-switch{min-height:25px;padding:4px}.auto-mode{min-height:21px;padding:3px 5px}
+ .auto-subrow input[type="range"]{height:15px}.auto-trend{height:15px}.auto-message{font-size:9px}
+}
 </style>
 </head><body>
 <div class="app">
@@ -175,7 +215,7 @@ body.strategy-open{overflow:hidden}
 <div class="layout">
 <div class="left">
 <div class="table" aria-label="Blackjack table">
-<div class="felttext">BLACKJACK <small>BLACKJACK PAYS 3 TO 2</small></div>
+<div class="felttext">BLACKJACK <small>BLACKJACK PAYS 3 TO 2</small></div><div id="autoTableTag" class="autotable-tag" aria-hidden="true">AUTO · BASIC</div>
 <div class="dealerzone"><div class="who">DEALER <span id="dealerTotal"></span></div><div id="dealerCards" class="cards"><div class="noCards">Waiting for first deal</div></div></div>
 <div class="playerzone"><div class="who">YOUR HANDS</div><div class="handset" id="playerHands"><div class="noCards">Set your wager and deal to begin</div></div></div>
 <div class="tablefooter"><span id="tableRules">6 decks · S17 · 3:2 blackjack · DAS · late surrender</span></div>
@@ -183,6 +223,22 @@ body.strategy-open{overflow:hidden}
 <div class="panel sectionpad" style="margin-top:13px">
 <div class="betgrid"><div><div class="sectitle">Main wager <span class="sub"> · choose before dealing</span></div><div class="wager"><button class="smallbtn" id="betMinus" aria-label="Reduce bet by ten">−</button><input id="mainBet" class="amt" type="number" min="10" max="500" step="5" value="10" aria-label="Main wager in dollars"><button class="smallbtn" id="betPlus" aria-label="Increase bet by ten">+</button><button class="smallbtn" id="doubleBet">×2 Bet</button></div></div><div class="chips" aria-label="Set main wager"><button class="chip" data-chip="10">$10</button><button class="chip" data-chip="25">$25</button><button class="chip" data-chip="50">$50</button><button class="chip" data-chip="100">$100</button></div></div>
 <div class="sidegrid"><div class="side"><label for="pairBet">Perfect Pairs side bet</label><small>Same rank in first two cards</small><select id="pairBet"><option value="0">Off · recommended</option><option value="5">$5</option><option value="10">$10</option><option value="25">$25</option></select><small>25:1 same suit · 12:1 same color · 6:1 mixed</small></div><div class="side"><label for="threeBet">21+3 side bet</label><small>Your 2 cards + dealer upcard</small><select id="threeBet"><option value="0">Off · recommended</option><option value="5">$5</option><option value="10">$10</option><option value="25">$25</option></select><small>5:1 flush · 10:1 straight · up to 100:1</small></div></div>
+
+<div class="auto-panel" id="autoPanel" aria-label="Auto play controls">
+  <div class="auto-mainrow">
+    <button type="button" id="autoToggle" class="auto-switch" aria-pressed="false">▶ Auto play</button>
+    <div class="auto-modes" role="group" aria-label="Automatic strategy">
+      <button type="button" class="auto-mode active" data-auto-mode="basic" aria-pressed="true">Basic</button>
+      <button type="button" class="auto-mode" data-auto-mode="count" aria-pressed="false">Hi-Lo</button>
+    </div>
+    <label class="auto-speed-label" for="autoSpeed">Speed <strong id="autoSpeedLabel">1×</strong></label>
+  </div>
+  <div class="auto-subrow">
+    <input type="range" id="autoSpeed" min="0" max="4" step="1" value="1" aria-label="Auto play speed, 0.5 to 8 times">
+    <svg class="auto-trend" viewBox="0 0 90 28" role="img" aria-label="Bankroll trend"><path id="autoTrend" d="M0 14 L90 14"/></svg>
+    <span id="autoMessage" class="auto-message" role="status">Choose a bet, then watch Auto play.</span>
+  </div>
+</div>
 <div id="actions" class="actions" aria-label="Blackjack actions"></div><div id="quickFeedback" class="quick-feedback" role="status" aria-live="polite"></div>
 <div id="notice" class="notice" role="status">Bet $10 to begin. The two coaches only reveal advice when you ask.</div>
 <div id="decisionReview" class="decision-review" role="status" aria-live="polite" hidden></div>
@@ -192,6 +248,13 @@ body.strategy-open{overflow:hidden}
 <div class="right">
 <section class="panel sectionpad coachpanel"><h2 class="sectitle">Your decision, your call</h2><div class="coachbuttons"><button class="coachbtn" id="askBasic">✦ Basic strategy<small>Best standard play · why</small></button><button class="coachbtn count" id="askCount">♠ Card-counting advice<small>Hi-Lo deviations · bet sizing</small></button></div><div class="coach-shell" id="coachShell"><div class="coach-shell-head"><strong>Strategy coach</strong><button id="closeCoach" class="sheet-close" aria-label="Close strategy coach">Done ✕</button></div><div id="coachOutput" class="coachbox"><span class="coachtag">Coaching hidden by default</span><div class="coachtext" style="margin-top:8px">Make your own decision, or tap either coach for a recommendation. Advice never plays the hand for you.</div></div></div><div id="feedback" class="statline">Choices are tracked after you act, not before.</div></section>
 <div class="extra-panels" id="extraPanels"><div class="more-head"><strong>More tools</strong><button id="closeMore" class="sheet-close" aria-label="Close more tools">Done ✕</button></div><section class="panel sectionpad mobile-sidepanel" id="sidebetsSection"><h2 class="sectitle">Optional side bets</h2><div id="sidebetsMount"></div></section><section class="panel sectionpad" id="countGuideSection"><h2 class="sectitle">Learn the Hi-Lo count</h2><div class="hi-low"><div class="hl"><strong>+1</strong><span>2, 3, 4, 5, 6</span></div><div class="hl"><strong>0</strong><span>7, 8, 9</span></div><div class="hl"><strong>−1</strong><span>10, J, Q, K, A</span></div></div><div class="explain">Start each new shoe at zero. Add each <b>visible</b> card's value, including the dealer's hole card only if it is revealed. Divide the running count by decks remaining to get the <b>true count</b>.</div><div class="review"><b>Example:</b> running count +6 with 2 decks remaining → true count +3. At +3, insurance can become profitable, unlike at a fresh shoe.</div><div id="betCoach" class="statline"></div><div class="btnbar"><button id="toggleCount">Hide count to practice</button><button id="newShoe">Shuffle new shoe</button></div></section>
+
+<section class="panel sectionpad" id="performanceSection">
+  <h2 class="sectitle">Bankroll over time</h2>
+  <div class="auto-chart-wrap"><svg class="auto-chart" id="bankrollChart" viewBox="0 0 420 122" role="img" aria-label="Bankroll change across completed rounds"><path class="baseline" id="bankBaseline" d="M0 62 L420 62"/><path class="bankline" id="bankrollLine" d="M0 62 L420 62"/><circle class="bankdot" id="bankrollDot" cx="420" cy="62" r="4"/></svg></div>
+  <div class="auto-report" id="autoReport">Starting at $1,000 · 0 hands completed.</div>
+  <p class="auto-hint">Auto uses your chosen main wager and side bets for every new hand. Hi-Lo mode uses running and true counts to alter decisions and insurance, not to change the wager automatically. It follows approximate common Hi-Lo indices; it is not an exact finite-shoe optimizer. Virtual money only.</p>
+</section>
 <section class="panel sectionpad"><h2 class="sectitle">Last rounds</h2><div id="history" class="history"><div class="sub">No completed rounds yet.</div></div><div id="sessionstats" class="statline"></div></section>
 <section class="panel sectionpad"><details class="settings" id="settings"><summary>⚙ Table rules & settings</summary><div class="controls"><label>Decks<select id="optDecks"><option value="6">6 decks</option><option value="8">8 decks</option></select></label><label>Dealer soft 17<select id="optH17"><option value="false">Stand (S17)</option><option value="true">Hit (H17)</option></select></label><label>Blackjack payout<select id="optPayout"><option value="1.5">3:2 (better)</option><option value="1.2">6:5</option></select></label><label>Cut card / penetration<select id="optPen"><option value="0.5">50% · online style</option><option value="0.65">65%</option><option value="0.75" selected>75% · typical shoe</option><option value="0.85">85% · deep shoe</option></select></label><label>Double after split<select id="optDas"><option value="true">Allowed</option><option value="false">Not allowed</option></select></label><label>Late surrender<select id="optSurrender"><option value="true">Allowed</option><option value="false">Not allowed</option></select></label></div><p>Settings can be changed between rounds; changing them starts a fresh shoe but keeps your bankroll. American hole-card/peek game. Split to 4 hands; split aces receive one card each, with no re-splitting aces.</p><div class="btnbar"><button id="resetSession">Reset bankroll & session</button></div></details></section></div>
 </div></div>
@@ -269,19 +332,48 @@ function recordDecision(a){const b=baseStrategy(),c=countStrategy(),h=activeHand
 function play(a){if(state.phase!=='playing')return;const h=activeHand(),allowed=legal();if(!allowed.includes(a))return;recordDecision(a);state.coach=null;state.notice='';switch(a){case'hit':h.cards.push(draw(true));if(score(h.cards).bust){h.done=true;h.result='Bust';state.notice='Bust on hand '+(state.active+1)+'.'}else if(score(h.cards).total===21){h.done=true;h.result='21';state.notice='21! Hand '+(state.active+1)+' stands automatically.'}else state.notice='Card drawn. Choose your next move.';break;case'stand':h.done=true;h.result='Stand';state.notice='Standing on '+score(h.cards).total+'.';break;case'double':state.bankroll-=h.bet;h.bet*=2;h.doubled=true;h.cards.push(draw(true));h.done=true;h.result=score(h.cards).bust?'Double bust':'Doubled';state.notice='Doubled down. You receive exactly one additional card.';break;case'surrender':h.surrendered=true;h.done=true;h.result='Surrender';state.bankroll+=h.bet/2;h.paid=h.bet/2;state.notice='Surrendered. Half the wager is returned.';break;case'split':{state.bankroll-=h.bet;const splitA=h.cards[0].rank==='A',c1=h.cards[0],c2=h.cards[1],bet=h.bet;state.hands.splice(state.active,1,makeHand([c1],bet,true,splitA,false),makeHand([c2],bet,true,splitA,true));let first=activeHand();first.cards.push(draw(true));if(first.aceSplit||score(first.cards).total===21){first.done=true;first.result=first.aceSplit?'Split ace':'21'}state.notice='Pair split into two hands. Each carries its own wager.';break}}
 if(activeHand()?.done)advance();render()}
 function advance(){let i=state.active+1;while(i<state.hands.length){state.active=i;const h=activeHand();if(h.pending){h.cards.push(draw(true));h.pending=false;if(h.aceSplit||score(h.cards).total===21){h.done=true;h.result=h.aceSplit?'Split ace':'21'}}if(!h.done)return;i++}finishRound(false)}
-function finishRound(dealerNatural){if(state.phase==='settled')return;if(!dealerNatural&&state.hands.some(h=>!h.surrendered&&!score(h.cards).bust&&!(score(h.cards).blackjack&&!h.fromSplit))){revealHole();let ds=score(state.dealer);while(ds.total<17||(state.rules.h17&&ds.total===17&&ds.soft)){state.dealer.push(draw(true));ds=score(state.dealer)}}
-const ds=score(state.dealer);for(const h of state.hands){if(h.surrendered)continue;let ps=score(h.cards),natural=ps.blackjack&&!h.fromSplit;let credit=0,result='';if(dealerNatural){if(natural){credit=h.bet;result='Push · BJ vs BJ'}else result='Lose · dealer BJ'}else if(natural){credit=h.bet*(1+state.rules.payout);result='Blackjack '+(state.rules.payout===1.5?'3:2':'6:5')}else if(ps.bust){result='Bust'}else if(ds.bust){credit=2*h.bet;result='Win · dealer bust'}else if(ps.total>ds.total){credit=2*h.bet;result='Win'}else if(ps.total===ds.total){credit=h.bet;result='Push'}else result='Lose';h.paid=credit;h.result=result;state.bankroll+=credit}
-state.rounds++;const delta=state.bankroll-state.roundStart;const txt=state.hands.map(h=>h.result).join(' · ');state.history.unshift({n:state.rounds,delta,bet:state.roundBase,result:txt,side:state.roundNotes.join(' / ')});state.history=state.history.slice(0,12);state.phase='settled';state.coach=null;state.notice=(delta>0?'Won ':delta<0?'Lost ':'Broke even: ')+(delta===0?'$0':money(Math.abs(delta)))+' this round. '+(state.needShuffle?'Cut card reached; next hand will use a new shoe.':'')}
+function dealerShouldDraw(){const s=score(state.dealer);return s.total<17||(state.rules.h17&&s.total===17&&s.soft)}
+function dealerHasLiveHands(){return state.hands.some(h=>!h.surrendered&&!score(h.cards).bust&&!(score(h.cards).blackjack&&!h.fromSplit))}
+function finishRound(dealerNatural){
+  if(state.phase==='settled'||state.phase==='dealer')return;
+  if(!dealerNatural&&dealerHasLiveHands()){
+    revealHole();
+    if(autoPlay.enabled){state.phase='dealer';state.notice='Dealer reveals the hole card and plays the table rules.';autoPlay.visual={kind:'hole'};autoPlay.message='Dealer reveals '+state.dealer[1].rank+' · total '+score(state.dealer).total;return}
+    while(dealerShouldDraw())state.dealer.push(draw(true));
+  }
+  settleRound(dealerNatural);
+}
+function settleRound(dealerNatural){
+  const ds=score(state.dealer);for(const h of state.hands){if(h.surrendered)continue;let ps=score(h.cards),natural=ps.blackjack&&!h.fromSplit;let credit=0,result='';if(dealerNatural){if(natural){credit=h.bet;result='Push · BJ vs BJ'}else result='Lose · dealer BJ'}else if(natural){credit=h.bet*(1+state.rules.payout);result='Blackjack '+(state.rules.payout===1.5?'3:2':'6:5')}else if(ps.bust){result='Bust'}else if(ds.bust){credit=2*h.bet;result='Win · dealer bust'}else if(ps.total>ds.total){credit=2*h.bet;result='Win'}else if(ps.total===ds.total){credit=h.bet;result='Push'}else result='Lose';h.paid=credit;h.result=result;state.bankroll+=credit}
+  state.rounds++;const delta=state.bankroll-state.roundStart;const txt=state.hands.map(h=>h.result).join(' · ');state.history.unshift({n:state.rounds,delta,bet:state.roundBase,result:txt,side:state.roundNotes.join(' / ')});state.history=state.history.slice(0,12);state.phase='settled';state.coach=null;state.notice=(delta>0?'Won ':delta<0?'Lost ':'Broke even: ')+(delta===0?'$0':money(Math.abs(delta)))+' this round. '+(state.needShuffle?'Cut card reached; next hand will use a new shoe.':'');
+  autoPlay.bankrollTrail.push(state.bankroll);autoPlay.message='Hand '+state.rounds+' · '+(delta>0?'Won '+money(delta):delta<0?'Lost '+money(-delta):'Push / break-even')+' · '+money(state.bankroll)+' left';
+}
+function dealerAutoStep(){
+  if(state.phase!=='dealer')return;
+  if(dealerShouldDraw()){
+    const i=state.dealer.length;state.dealer.push(draw(true));autoPlay.visual={kind:'dealer',index:i};
+    state.notice='Dealer draws '+state.dealer[i].rank+' · total '+score(state.dealer).total+'.';
+    autoPlay.message='Dealer hits '+state.dealer[i].rank+' → '+score(state.dealer).total;
+  }else{
+    autoPlay.visual={kind:'result'};settleRound(false);
+  }
+  render();
+}
+function finishDealerImmediately(){
+  if(state.phase!=='dealer')return;
+  while(dealerShouldDraw())state.dealer.push(draw(true));
+  autoPlay.visual=null;settleRound(false);render();
+}
 function takeFromInput(){let v=Math.round(Number($('mainBet').value)/5)*5;state.bets.main=clamp(Number.isFinite(v)?v:10,10,500);$('mainBet').value=state.bets.main}
 function nextBetAmount(n){state.bets.main=clamp(Math.round(n/5)*5,10,500);render()}
-function newShoe(){if(state.phase==='playing'||state.phase==='insurance'){state.notice='Finish the current round before shuffling.';render();return}shuffle();state.coach=null;state.hands=[];state.dealer=[];state.phase='betting';state.lastFeedback=null;render()}
-function ruleChange(){if(['playing','insurance'].includes(state.phase)){render();return}state.rules={decks:Number($('optDecks').value),h17:$('optH17').value==='true',payout:Number($('optPayout').value),penetration:Number($('optPen').value),das:$('optDas').value==='true',surrender:$('optSurrender').value==='true'};shuffle();state.coach=null;state.hands=[];state.dealer=[];state.phase='betting';state.lastFeedback=null;render()}
-function resetSession(){if(['playing','insurance'].includes(state.phase)){state.notice='Finish the round before resetting the session.';render();return}state.bankroll=1000;state.startBankroll=1000;state.rounds=0;state.history=[];state.decisions=0;state.basicsCorrect=0;state.countsCorrect=0;state.hands=[];state.dealer=[];state.phase='betting';state.coach=null;state.lastFeedback=null;state.bets={main:10,pair:0,three:0};$('pairBet').value='0';$('threeBet').value='0';shuffle();render()}
-function cardHTML(c,back){if(back)return '<div class="cardface back" aria-label="Face-down dealer card"><span>♠</span></div>';const red=c.suit==='♥'||c.suit==='♦';return '<div class="cardface '+(red?'red':'')+'" aria-label="'+c.rank+' of '+({ '♠':'spades','♥':'hearts','♦':'diamonds','♣':'clubs'})[c.suit]+'"><span class="corner">'+c.rank+'</span><span class="rank">'+c.rank+'</span><span class="suit">'+c.suit+'</span></div>'}
-function paintTable(){if(!state.dealer.length){$('dealerCards').innerHTML='<div class="noCards">Waiting for first deal</div>';$('dealerTotal').textContent='';$('playerHands').innerHTML='<div class="noCards">Set your wager and deal to begin</div>';return}$('dealerCards').innerHTML=state.dealer.map((c,i)=>cardHTML(c,i===1&&!state.holeVisible)).join('');const st=score(state.dealer);$('dealerTotal').textContent=state.holeVisible?' · '+st.total+(st.soft?' soft':'')+(st.bust?' BUST':''):' · '+(upValue(state.dealer[0])===11?'Ace':upValue(state.dealer[0]))+' showing';$('playerHands').innerHTML=state.hands.map((h,i)=>'<div class="hand '+(i===state.active&&state.phase==='playing'?'active':'')+'"><div class="hlbl">HAND '+(i+1)+' · '+money(h.bet)+(i===state.active&&state.phase==='playing'?' <em>◉</em>':'')+'</div><div class="cards">'+h.cards.map(c=>cardHTML(c,false)).join('')+(h.pending?'<div class="cardface back"><span>♠</span></div>':'')+'</div><div class="status">'+(h.pending?'Waiting for card':h.result||((score(h.cards).soft?'Soft ':'')+score(h.cards).total))+'</div></div>').join('')}
+function newShoe(){if(autoPlay.enabled)stopAuto('New shoe requested');if(state.phase==='playing'||state.phase==='insurance'){state.notice='Finish the current round before shuffling.';render();return}shuffle();state.coach=null;state.hands=[];state.dealer=[];state.phase='betting';state.lastFeedback=null;render()}
+function ruleChange(){if(autoPlay.enabled)stopAuto('Table rules changed');if(['playing','insurance'].includes(state.phase)){render();return}state.rules={decks:Number($('optDecks').value),h17:$('optH17').value==='true',payout:Number($('optPayout').value),penetration:Number($('optPen').value),das:$('optDas').value==='true',surrender:$('optSurrender').value==='true'};shuffle();state.coach=null;state.hands=[];state.dealer=[];state.phase='betting';state.lastFeedback=null;render()}
+function resetSession(){if(autoPlay.enabled)stopAuto('Reset requested');if(['playing','insurance'].includes(state.phase)){state.notice='Finish the round before resetting the session.';render();return}state.bankroll=1000;state.startBankroll=1000;state.rounds=0;state.history=[];autoPlay.bankrollTrail=[1000];autoPlay.visual=null;autoPlay.message="Choose a bet, then watch Auto play.";state.decisions=0;state.basicsCorrect=0;state.countsCorrect=0;state.hands=[];state.dealer=[];state.phase='betting';state.coach=null;state.lastFeedback=null;state.bets={main:10,pair:0,three:0};$('pairBet').value='0';$('threeBet').value='0';shuffle();render()}
+function cardHTML(c,back,anim='',delay=0){const css=anim?' '+anim:'';const sty=anim?' style="--card-delay:'+delay+'ms"':'';if(back)return '<div class="cardface back'+css+'"'+sty+' aria-label="Face-down dealer card"><span>♠</span></div>';const red=c.suit==='♥'||c.suit==='♦';return '<div class="cardface '+(red?'red':'')+css+'"'+sty+' aria-label="'+c.rank+' of '+({ '♠':'spades','♥':'hearts','♦':'diamonds','♣':'clubs'})[c.suit]+'"><span class="corner">'+c.rank+'</span><span class="rank">'+c.rank+'</span><span class="suit">'+c.suit+'</span></div>'}
+function paintTable(){if(!state.dealer.length){$('dealerCards').innerHTML='<div class="noCards">Waiting for first deal</div>';$('dealerTotal').textContent='';$('playerHands').innerHTML='<div class="noCards">Set your wager and deal to begin</div>';return}const v=autoPlay.visual;const stepMs=Math.round(125/autoSpeedValue());$('dealerCards').innerHTML=state.dealer.map((c,i)=>cardHTML(c,i===1&&!state.holeVisible,v&&v.kind==='deal'?'auto-enter':v&&v.kind==='hole'&&i===1?'auto-flip':v&&v.kind==='dealer'&&i===v.index?'auto-enter':'',v&&v.kind==='deal'?(i===0?stepMs:3*stepMs):0)).join('');const st=score(state.dealer);$('dealerTotal').textContent=state.holeVisible?' · '+st.total+(st.soft?' soft':'')+(st.bust?' BUST':''):' · '+(upValue(state.dealer[0])===11?'Ace':upValue(state.dealer[0]))+' showing';$('playerHands').innerHTML=state.hands.map((h,i)=>'<div class="hand '+(i===state.active&&state.phase==='playing'?'active':'')+(v&&v.kind==='move'&&v.hand===i?' auto-highlight':'')+'"><div class="hlbl">HAND '+(i+1)+' · '+money(h.bet)+(i===state.active&&state.phase==='playing'?' <em>◉</em>':'')+'</div><div class="cards">'+h.cards.map((c,j)=>cardHTML(c,false,v&&v.kind==='deal'&&i===0&&j<2?'auto-enter':v&&v.kind==='player'&&i===v.hand&&j===v.index?'auto-enter':v&&v.kind==='split'&&(i===v.hand||i===v.hand+1)&&j===1?'auto-enter':'',v&&v.kind==='deal'?2*j*stepMs:0)).join('')+(h.pending?'<div class="cardface back"><span>♠</span></div>':'')+'</div><div class="status">'+(h.pending?'Waiting for card':h.result||((score(h.cards).soft?'Soft ':'')+score(h.cards).total))+'</div></div>').join('')}
 function actBtn(text,action,enabled=true,cl=''){return '<button class="action '+cl+'" data-action="'+action+'" '+(!enabled?'disabled':'')+'>'+text+'</button>'}
 function renderActions(){const p=state.phase,a=legal(),h=activeHand();let html='';if(p==='betting'||p==='settled'){html=actBtn(p==='betting'?'DEAL CARDS':'DEAL NEXT HAND','deal',true,'primary span3')+actBtn(p==='betting'?'Set count bet':'Use count bet','useBet',true,'alt span2');if(p==='settled')html+=actBtn('Adjust bets','adjust',true,'mild spanall')}
-else if(p==='insurance')html=actBtn('Decline insurance','decline',true,'primary span3')+actBtn('Take insurance '+money(state.roundBase/2),'insure',state.bankroll>=state.roundBase/2,'span2');else if(p==='playing'){html=actBtn('Hit','hit',a.includes('hit'),'primary')+actBtn('Stand','stand',a.includes('stand'))+actBtn('Double down','double',a.includes('double'))+actBtn('Split pair','split',a.includes('split'))+actBtn('Surrender','surrender',a.includes('surrender'))} $('actions').innerHTML=html;document.querySelectorAll('[data-action]').forEach(x=>x.addEventListener('click',()=>{const a=x.dataset.action;if(a==='deal')newRound();else if(a==='insure'||a==='decline'){recordDecision(a);respondInsurance(a==='insure')}else if(a==='useBet')nextBetAmount(betRamp().suggested);else if(a==='adjust'){state.phase='betting';state.coach=null;render()}else play(a)}))}
+else if(p==='insurance')html=actBtn('Decline insurance','decline',true,'primary span3')+actBtn('Take insurance '+money(state.roundBase/2),'insure',state.bankroll>=state.roundBase/2,'span2');else if(p==='playing'){html=actBtn('Hit','hit',a.includes('hit'),'primary')+actBtn('Stand','stand',a.includes('stand'))+actBtn('Double down','double',a.includes('double'))+actBtn('Split pair','split',a.includes('split'))+actBtn('Surrender','surrender',a.includes('surrender'))} $('actions').innerHTML=html;document.querySelectorAll('[data-action]').forEach(x=>x.addEventListener('click',()=>{if(autoPlay.enabled)stopAuto('Manual takeover · choose your moves');const a=x.dataset.action;if(a==='deal')newRound();else if(a==='insure'||a==='decline'){recordDecision(a);respondInsurance(a==='insure')}else if(a==='useBet')nextBetAmount(betRamp().suggested);else if(a==='adjust'){state.phase='betting';state.coach=null;render()}else play(a)}))}
 function coachHTML(){let r=state.coach;if(!r){$('coachOutput').innerHTML='<span class="coachtag">Coaching hidden by default</span><div class="coachtext" style="margin-top:8px">Make your own decision, or tap either coach for a recommendation. Advice never plays the hand for you.</div>';return}if(r==='basic'){let s=baseStrategy();$('coachOutput').innerHTML='<span class="coachtag">Basic strategy · no counting</span><div class="recomm">'+s.label+'</div><div class="coachtext">'+s.why+'</div><div class="coachdiff">'+(state.phase==='playing'?'This is the best total-dependent action for the table rules, assuming a neutral shoe.':'Basic strategy does not make the casino edge disappear.')+'</div>'}else{const s=countStrategy(),b=baseStrategy(),br=betRamp(),t=trueCount(),rem=(state.shoe.length/52).toFixed(2),idx=s.index?'<div class="coachdiff '+(s.changed?'warn':'')+'">'+(s.changed?'Count changes the play: ':'Count agrees with basic: ')+b.label+' → '+s.label+'. '+s.index+'; index '+(s.threshold>=0?'+':'')+s.threshold+'.</div>':'<div class="coachdiff">'+(s.changed?'Counting changes the recommended action.':'No playing deviation from basic strategy here.')+'</div>';$('coachOutput').innerHTML='<span class="coachtag gold">Hi-Lo advantage play</span><div class="recomm">'+s.label+'</div><div class="coachtext">'+s.why+'</div>'+idx+'<div class="explain"><b>Visible count:</b> '+signed(state.rc)+' ÷ '+rem+' decks ≈ <b>'+fmtTC(t)+'</b>. '+(state.phase==='playing'?'The dealer’s face-down card is not included until it is exposed.':'Bet ramp uses count information available before the next deal.')+'</div><div class="review">Next-round illustrative bet: <b>'+money(br.suggested)+'</b> ('+br.units+' × $10 unit). This is <b>not</b> a guaranteed-profitable or bankroll-optimized betting recommendation.<br><br><b>Common side bets:</b> Usually skip Perfect Pairs and 21+3. With this fresh-shoe paytable, their average house edges are about '+(state.rules.decks===6?'6.1% and 4.6%':'4.1% and 3.7%')+', respectively. Ordinary Hi-Lo does not provide a reliable side-bet betting signal.</div>'}}
 
 function escapeHTML(t){return String(t).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
@@ -289,7 +381,7 @@ function actionName(a){return ({hit:'Hit',stand:'Stand',double:'Double down',spl
 function renderDecisionReview(){const el=$('decisionReview'),f=state.lastFeedback;if(!f){el.hidden=true;el.innerHTML='';return}el.hidden=false;const bc=f.correctBasic,cc=f.correctCount;el.className='decision-review '+(bc&&cc?'is-correct':!bc&&!cc?'is-mistake':'is-mixed');const heading=bc&&cc?'✓ Correct move':!bc&&!cc?'↳ Better move available':'ℹ Basic and counting differ';const which=f.insurance?'Insurance offer':'Hand '+f.number+' · '+f.hand+' against '+f.dealer;let notes='';if(bc&&cc){notes='<div class="review-explain">'+escapeHTML(f.basic.why)+'</div>'}else{notes='<div class="review-rec">Basic strategy: '+escapeHTML(f.basic.label||actionName(f.basic.move))+(bc?' ✓':' · different from your move')+'</div><div class="review-explain">'+escapeHTML(f.basic.why)+'</div>'+'<div class="review-rec">Hi-Lo at true count '+(f.tc>=0?'+':'')+f.tc.toFixed(1)+': '+escapeHTML(f.count.label||actionName(f.count.move))+(cc?' ✓':' · different from your move')+'</div>';if(f.count.move!==f.basic.move)notes+='<div class="review-explain">'+escapeHTML(f.count.why)+'</div>';if(bc!==cc)notes+='<div class="review-explain">Your choice matches <b>'+ (bc?'basic strategy':'Hi-Lo')+'</b>, but not the other system. This isn’t necessarily an error if you deliberately chose that approach.</div>'}el.innerHTML='<div class="review-top">'+heading+'</div><div class="review-small">You chose <b>'+escapeHTML(actionName(f.action))+'</b> · '+escapeHTML(which)+' · count when chosen '+(f.tc>=0?'+':'')+f.tc.toFixed(1)+'</div>'+notes}
 
 function fmtTC(n){return (n>=0?'+':'')+n.toFixed(1)}
-function paint(){const bank=state.bankroll,profit=bank-state.startBankroll,t=trueCount(),d=state.shoe.length/52,br=betRamp();$('bankroll').textContent=money(bank);$('profit').textContent=(profit>0?'+':'')+money(profit);$('profit').className=profit>0?'pos':profit<0?'neg':'';$('rounds').textContent=state.rounds;$('decisionrate').textContent=state.decisions+' decisions';$('rc').textContent=state.showCount?signed(state.rc):'•••';$('tc').textContent=state.showCount?fmtTC(t):'•••';$('decksleft').textContent=d.toFixed(1);$('edgeapprox').textContent='Rough edge: '+fmtTC(br.est)+'%';$('edgeapprox').title='Illustrative, not an exact expected value calculation';$('shoeText').textContent='Shoe: '+Math.round(100*state.cardsDealt/state.shoeSize)+'% dealt';$('shoeFill').style.width=(100*state.cardsDealt/state.shoeSize)+'%';$('cutMarker').style.left=(100*state.rules.penetration)+'%';$('cutText').textContent='Cut at '+Math.round(100*state.rules.penetration)+'%';$('tableRules').textContent=state.rules.decks+' decks · '+(state.rules.h17?'H17':'S17')+' · '+(state.rules.payout===1.5?'3:2':'6:5')+' BJ · '+(state.rules.das?'DAS':'no DAS')+' · '+(state.rules.surrender?'late surrender':'no surrender');document.querySelector('.felttext small').textContent='BLACKJACK PAYS '+(state.rules.payout===1.5?'3 TO 2':'6 TO 5');$('notice').textContent=state.notice;$('mainBet').value=state.bets.main;let lock=state.phase==='playing'||state.phase==='insurance';$('mainBet').disabled=lock;for(const id of ['betMinus','betPlus','doubleBet','pairBet','threeBet','optDecks','optH17','optPayout','optPen','optDas','optSurrender'])$(id).disabled=lock;document.querySelectorAll('[data-chip]').forEach(x=>x.disabled=lock);$('betCoach').textContent='Illustrative count bet ramp (base $10): TC < +2 → $10; +2 → $20; +3 → $40; +4 → $60; +5 or more → $80. Next wager suggestion: '+money(br.suggested)+'.';$('toggleCount').textContent=state.showCount?'Hide count to practice':'Reveal running & true count';$('feedback').textContent=state.feedback||'Choices are tracked after you act, not before.';$('sessionstats').textContent=state.decisions?'Basic-strategy choices: '+state.basicsCorrect+'/'+state.decisions+' · Hi-Lo strategy choices: '+state.countsCorrect+'/'+state.decisions:'No decision accuracy data yet.';renderDecisionReview();renderQuickFeedback();$('quickCount').textContent=state.showCount?'Hide count':'Show count';$('history').innerHTML=state.history.length?state.history.map(row=>'<div class="histrow"><div><b>#'+row.n+'</b> · '+money(row.bet)+' bet<br><span class="sub">'+row.result+(row.side?' · '+row.side:'')+'</span></div><strong class="'+(row.delta>0?'positive':row.delta<0?'negative':'')+'">'+(row.delta>0?'+':'')+money(row.delta)+'</strong></div>').join(''):'<div class="sub">No completed rounds yet.</div>';paintTable();renderActions();coachHTML()}
+function paint(){const bank=state.bankroll,profit=bank-state.startBankroll,t=trueCount(),d=state.shoe.length/52,br=betRamp();$('bankroll').textContent=money(bank);$('profit').textContent=(profit>0?'+':'')+money(profit);$('profit').className=profit>0?'pos':profit<0?'neg':'';$('rounds').textContent=state.rounds;$('decisionrate').textContent=state.decisions+' decisions';$('rc').textContent=state.showCount?signed(state.rc):'•••';$('tc').textContent=state.showCount?fmtTC(t):'•••';$('decksleft').textContent=d.toFixed(1);$('edgeapprox').textContent='Rough edge: '+fmtTC(br.est)+'%';$('edgeapprox').title='Illustrative, not an exact expected value calculation';$('shoeText').textContent='Shoe: '+Math.round(100*state.cardsDealt/state.shoeSize)+'% dealt';$('shoeFill').style.width=(100*state.cardsDealt/state.shoeSize)+'%';$('cutMarker').style.left=(100*state.rules.penetration)+'%';$('cutText').textContent='Cut at '+Math.round(100*state.rules.penetration)+'%';$('tableRules').textContent=state.rules.decks+' decks · '+(state.rules.h17?'H17':'S17')+' · '+(state.rules.payout===1.5?'3:2':'6:5')+' BJ · '+(state.rules.das?'DAS':'no DAS')+' · '+(state.rules.surrender?'late surrender':'no surrender');document.querySelector('.felttext small').textContent='BLACKJACK PAYS '+(state.rules.payout===1.5?'3 TO 2':'6 TO 5');$('notice').textContent=state.notice;$('mainBet').value=state.bets.main;let lock=state.phase==='playing'||state.phase==='insurance';$('mainBet').disabled=lock;for(const id of ['betMinus','betPlus','doubleBet','pairBet','threeBet','optDecks','optH17','optPayout','optPen','optDas','optSurrender'])$(id).disabled=lock;document.querySelectorAll('[data-chip]').forEach(x=>x.disabled=lock);$('betCoach').textContent='Illustrative count bet ramp (base $10): TC < +2 → $10; +2 → $20; +3 → $40; +4 → $60; +5 or more → $80. Next wager suggestion: '+money(br.suggested)+'.';$('toggleCount').textContent=state.showCount?'Hide count to practice':'Reveal running & true count';$('feedback').textContent=state.feedback||'Choices are tracked after you act, not before.';$('sessionstats').textContent=state.decisions?'Basic-strategy choices: '+state.basicsCorrect+'/'+state.decisions+' · Hi-Lo strategy choices: '+state.countsCorrect+'/'+state.decisions:'No decision accuracy data yet.';renderDecisionReview();renderQuickFeedback();$('quickCount').textContent=state.showCount?'Hide count':'Show count';$('history').innerHTML=state.history.length?state.history.map(row=>'<div class="histrow"><div><b>#'+row.n+'</b> · '+money(row.bet)+' bet<br><span class="sub">'+row.result+(row.side?' · '+row.side:'')+'</span></div><strong class="'+(row.delta>0?'positive':row.delta<0?'negative':'')+'">'+(row.delta>0?'+':'')+money(row.delta)+'</strong></div>').join(''):'<div class="sub">No completed rounds yet.</div>';paintTable();renderActions();coachHTML();renderAutoUI()}
 function render(){paint()}
 
 /* Strategy lookup reuses the same baseStrategy and countStrategy functions as play.
@@ -328,7 +420,7 @@ function jumpToHighlightedCell(){if(refState.view!=='full'){refState.view='full'
 function renderRefContent(){$('refFull').classList.toggle('active',refState.view==='full');$('refCount').classList.toggle('active',refState.view==='count');$('refFull').setAttribute('aria-pressed',String(refState.view==='full'));$('refCount').setAttribute('aria-pressed',String(refState.view==='count'));$('referenceContent').innerHTML=refState.view==='full'?renderFullChart():renderCountIndices();if(refState.view==='full')centerHighlightedColumn()}
 function updateReference(){refState.live=false;refState.type=$('lookupType').value||null;refState.value=$('lookupHand').value?Number($('lookupHand').value):null;refState.up=$('lookupDealer').value?Number($('lookupDealer').value):null;renderLookup();if(refState.view==='full')renderRefContent()}
 function openReference(){closeMobileSheets();const current=currentHandReference();refState.open=true;refState.view='full';refState.live=!!current;refState.type=current?current.type:null;refState.value=current?current.value:null;refState.up=current?current.up:null;$('strategyModal').hidden=false;$('strategyModal').setAttribute('aria-hidden','false');document.body.classList.add('strategy-open');$('lookupType').value=refState.type||'';populateHands();$('lookupDealer').value=refState.up!=null?String(refState.up):'';$('referenceRules').textContent='Matches your current '+state.rules.decks+'-deck · '+(state.rules.h17?'H17':'S17')+' · '+(state.rules.das?'double after split':'no double after split')+' · '+(state.rules.surrender?'late surrender':'no surrender')+' settings. Basic strategy is independent of the current count.';renderLookup();renderRefContent();$('strategyModal').querySelector('.strategy-dialog').scrollTop=0;$('closeReference').focus()}
-function closeReference(){refState.open=false;$('strategyModal').hidden=true;$('strategyModal').setAttribute('aria-hidden','true');document.body.classList.remove('strategy-open');$('openReference').focus()}
+function closeReference(){refState.open=false;$('strategyModal').hidden=true;$('strategyModal').setAttribute('aria-hidden','true');document.body.classList.remove('strategy-open');$('openReference').focus();scheduleAuto()}
 $('openReference').addEventListener('click',openReference);
 $('closeReference').addEventListener('click',closeReference);
 $('strategyModal').addEventListener('click',e=>{if(e.target===$('strategyModal'))closeReference()});
@@ -343,16 +435,93 @@ $('referenceContent').addEventListener('click',e=>{const btn=e.target.closest('[
 
 $('askBasic').addEventListener('click',()=>{state.coach='basic';render();openCoachSheet()});$('askCount').addEventListener('click',()=>{state.coach='count';render();openCoachSheet()});$('mainBet').addEventListener('change',()=>{takeFromInput();render()});$('betMinus').addEventListener('click',()=>nextBetAmount(state.bets.main-10));$('betPlus').addEventListener('click',()=>nextBetAmount(state.bets.main+10));$('doubleBet').addEventListener('click',()=>nextBetAmount(state.bets.main*2));document.querySelectorAll('[data-chip]').forEach(x=>x.addEventListener('click',()=>nextBetAmount(Number(x.dataset.chip))));$('pairBet').addEventListener('change',e=>{state.bets.pair=Number(e.target.value);render()});$('threeBet').addEventListener('change',e=>{state.bets.three=Number(e.target.value);render()});$('toggleCount').addEventListener('click',()=>{state.showCount=!state.showCount;render()});$('newShoe').addEventListener('click',newShoe);for(const id of ['optDecks','optH17','optPayout','optPen','optDas','optSurrender'])$(id).addEventListener('change',ruleChange);$('resetSession').addEventListener('click',resetSession);
 
-/* Mobile game layout and a non-game-specific, blank-on-open strategy reference. */
+
+/* Auto mode is a normal browser timer only: never changes the player's wager. */
+const autoPlay={enabled:false,mode:'basic',speedIndex:1,timer:null,visual:null,message:'Choose a bet, then watch Auto play.',bankrollTrail:[1000],lastAction:null};
+const autoSpeeds=[.5,1,2,4,8];
+function autoSpeedValue(){return autoSpeeds[autoPlay.speedIndex]}
+function autoCanAdvance(){return !refState.open&&!document.hidden&&!document.body.classList.contains('more-open')&&!document.body.classList.contains('coach-open')&&!document.body.classList.contains('feedback-open')}
+function autoDelay(phase){const sp=autoSpeedValue();return Math.round(Math.max(phase==='settled'?420:170,({betting:1270,settled:2000,insurance:1300,playing:1200,dealer:1050}[phase]||1100)/sp))}
+function autoClearTimer(){if(autoPlay.timer!=null){clearTimeout(autoPlay.timer);autoPlay.timer=null}}
+function scheduleAuto(delay){autoClearTimer();if(!autoPlay.enabled||!autoCanAdvance())return;autoPlay.timer=setTimeout(()=>{autoPlay.timer=null;autoStep()},delay==null?autoDelay(state.phase):delay)}
+function stopAuto(message){const was=autoPlay.enabled;autoPlay.enabled=false;autoClearTimer();autoPlay.visual=null;autoPlay.message=message||'Manual control restored. Your wager is unchanged.';document.body.classList.remove('auto-playing');if(state.phase==='dealer')finishDealerImmediately();else if(was)render();}
+function autoMoveDescription(recommendation,phase){const prefix=autoPlay.mode==='basic'?'Basic':'Hi-Lo';return prefix+' · '+recommendation.label+(phase==='playing'?' · TC '+fmtTC(trueCount()):'')}
+function autoStep(){
+  if(!autoPlay.enabled||!autoCanAdvance())return;
+  autoPlay.visual=null;
+  const beforePhase=state.phase;
+  if(beforePhase==='betting'||beforePhase==='settled'){
+    const amount=state.bets.main+state.bets.pair+state.bets.three;
+    if(state.bankroll<amount||amount<10){stopAuto('Auto paused: adjust your bet or replenish practice credits.');return}
+    autoPlay.message='Dealing hand '+(state.rounds+1)+' · wager '+money(state.bets.main);autoPlay.visual={kind:'deal'};
+    const roundsBefore=state.rounds;newRound();
+    if(state.phase===beforePhase&&state.rounds===roundsBefore){stopAuto('Auto paused: check the wager / table settings.');return}
+  }else if(beforePhase==='insurance'){
+    const r=autoPlay.mode==='basic'?baseStrategy():countStrategy();
+    const move=r.move==='insure'&&state.bankroll>=state.roundBase/2?'insure':'decline';
+    autoPlay.lastAction=move;autoPlay.visual={kind:'move',hand:state.active};autoPlay.message=autoMoveDescription({...r,label:actionName(move)},beforePhase);
+    recordDecision(move);respondInsurance(move==='insure');
+  }else if(beforePhase==='playing'){
+    const r=autoPlay.mode==='basic'?baseStrategy():countStrategy(),available=legal();
+    let move=r.move;
+    if(!available.includes(move))move=available.includes('stand')?'stand':available[0];
+    if(!move){stopAuto('Auto paused: no available action.');return}
+    autoPlay.lastAction=move;autoPlay.message=autoMoveDescription({...r,label:actionName(move)},beforePhase);
+    const h=activeHand();autoPlay.visual=move==='hit'||move==='double'?{kind:'player',hand:state.active,index:h.cards.length}:move==='split'?{kind:'split',hand:state.active}:{kind:'move',hand:state.active};
+    play(move);
+  }else if(beforePhase==='dealer'){
+    dealerAutoStep();
+  }else{
+    stopAuto('Auto stopped: unexpected game state.');return;
+  }
+  if(!autoPlay.enabled)return;
+  renderAutoUI();
+  scheduleAuto(autoDelay(state.phase));
+}
+function toggleAuto(){
+  if(autoPlay.enabled){stopAuto('Manual control restored. Current hand stays in play.');return}
+  autoPlay.enabled=true;autoPlay.message='Auto '+(autoPlay.mode==='basic'?'Basic strategy':'Hi-Lo counting')+' · fixed wager '+money(state.bets.main);autoPlay.visual=null;
+  document.body.classList.add('auto-playing');render();scheduleAuto(state.phase==='playing'||state.phase==='insurance'?280:420);
+}
+function trendCoords(history,width,height,pad){
+  const values=history.length>180?history.filter((v,i)=>i%Math.ceil(history.length/180)===0||i===history.length-1):history;
+  const lo=Math.min(...values),hi=Math.max(...values),span=Math.max(1,hi-lo),left=pad,right=width-pad,top=pad,bottom=height-pad;
+  const points=values.map((v,i)=>[left+(values.length===1?.5:i/(values.length-1))*(right-left),bottom-(v-lo)/span*(bottom-top)]);
+  return {points,lo,hi};
+}
+function trendPath(points){return points.map((p,i)=>(i?'L':'M')+p[0].toFixed(2)+' '+p[1].toFixed(2)).join(' ')}
+function renderAutoUI(){
+  const el=$('autoPanel');el.classList.toggle('is-on',autoPlay.enabled);
+  document.body.classList.toggle('auto-playing',autoPlay.enabled);
+  $('autoToggle').textContent=autoPlay.enabled?'■ Auto off':'▶ Auto play';$('autoToggle').setAttribute('aria-pressed',String(autoPlay.enabled));
+  document.querySelectorAll('[data-auto-mode]').forEach(x=>{const on=x.dataset.autoMode===autoPlay.mode;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
+  $('autoSpeedLabel').textContent=autoSpeedValue()+'×';$('autoMessage').textContent=autoPlay.message;
+  $('autoTableTag').textContent='AUTO · '+(autoPlay.mode==='basic'?'BASIC':'HI-LO');
+  document.querySelector('.table').style.setProperty('--card-duration',Math.max(.15,.56/autoSpeedValue())+'s');
+  const small=trendCoords(autoPlay.bankrollTrail,90,28,3);$('autoTrend').setAttribute('d',trendPath(small.points));
+  const big=trendCoords(autoPlay.bankrollTrail,420,122,10);$('bankrollLine').setAttribute('d',trendPath(big.points));
+  const base=autoPlay.bankrollTrail[0];const minV=big.lo,maxV=big.hi;const baseY=112-(base-minV)/Math.max(1,maxV-minV)*102;
+  $('bankBaseline').setAttribute('d','M10 '+baseY.toFixed(2)+' L410 '+baseY.toFixed(2));
+  const last=big.points[big.points.length-1];$('bankrollDot').setAttribute('cx',last[0]);$('bankrollDot').setAttribute('cy',last[1]);
+  const gain=state.bankroll-state.startBankroll;
+  $('autoReport').innerHTML='<strong>'+money(state.bankroll)+'</strong> now · '+(gain>=0?'+':'')+money(gain)+' net · '+state.rounds+' completed hand'+(state.rounds===1?'':'s')+'<small>Highest '+money(maxV)+' · Lowest '+money(minV)+' · Selected wager '+money(state.bets.main)+'</small>';
+}
+$('autoToggle').addEventListener('click',toggleAuto);
+document.querySelectorAll('[data-auto-mode]').forEach(x=>x.addEventListener('click',()=>{autoPlay.mode=x.dataset.autoMode;autoPlay.message=autoPlay.enabled?'Now following '+(autoPlay.mode==='basic'?'basic strategy':'Hi-Lo index play')+'.':'Strategy selected: '+(autoPlay.mode==='basic'?'basic':'Hi-Lo')+'.';renderAutoUI();if(autoPlay.enabled)scheduleAuto()}));
+$('autoSpeed').addEventListener('input',e=>{autoPlay.speedIndex=Number(e.target.value);renderAutoUI();if(autoPlay.enabled)scheduleAuto()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)scheduleAuto()});
+window.addEventListener('pagehide',()=>{autoPlay.enabled=false;autoClearTimer()});
+
+/* Mobile game layout and responsive strategy reference. */
 const mobileMedia=window.matchMedia('(max-width:640px)');
 const sideBetsNode=document.querySelector('.sidegrid');
 function syncMobilePanels(){if(mobileMedia.matches){$('sidebetsMount').appendChild(sideBetsNode)}else{$('actions').before(sideBetsNode);closeMobileSheets();document.body.classList.remove('more-open')}}
 mobileMedia.addEventListener('change',syncMobilePanels);
-function closeMobileSheets(){document.body.classList.remove('coach-open','feedback-open')}
+function closeMobileSheets(){document.body.classList.remove('coach-open','feedback-open');scheduleAuto()}
 function openCoachSheet(){if(!mobileMedia.matches)return;document.body.classList.remove('feedback-open');document.body.classList.add('coach-open')}
 function openFeedbackSheet(){if(!state.lastFeedback)return;closeMobileSheets();$('feedbackDetailBody').innerHTML='<div class="decision-review '+(state.lastFeedback.correctBasic&&state.lastFeedback.correctCount?'is-correct':'is-mistake')+'">'+$('decisionReview').innerHTML+'</div>';document.body.classList.add('feedback-open')}
 function openMore(section){closeMobileSheets();document.body.classList.add('more-open');$('extraPanels').scrollTop=0;if(section)requestAnimationFrame(()=>$(section).scrollIntoView({block:'start',behavior:'instant'}))}
-function closeMore(){document.body.classList.remove('more-open')}
+function closeMore(){document.body.classList.remove('more-open');scheduleAuto()}
 function compactReason(why){return why||'Review the recommendation for this hand.'}
 function renderQuickFeedback(){const el=$('quickFeedback'),f=state.lastFeedback;el.className='quick-feedback';if(/not enough credits|must be between|finish the round/i.test(state.notice)){el.classList.add('warn');el.innerHTML='<div class="quick-top"><span>Check your wager</span></div><div class="quick-why">'+escapeHTML(state.notice)+'</div>';return}if(!f){el.innerHTML='<div class="quick-top"><span>TABLE STATUS</span></div><div class="quick-why">'+escapeHTML(state.notice)+'</div>';return}
  const bc=f.correctBasic,cc=f.correctCount,base=f.basic,count=f.count;let heading='',why='';
